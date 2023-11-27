@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoFRW.API", "DemoFRW.API\DemoFRW.API.csproj", "{EDE5C06A-A2C1-47B0-8F2F-3CDBA12B1AC5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Éléments de solution", "Éléments de solution", "{46FAF435-9D92-484F-BE19-2C1F3B1C723B}"
+	ProjectSection(SolutionItems) = preProject
+		..\.gitignore = ..\.gitignore
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoFRW.PR", "DemoFRW.PR\DemoFRW.PR.csproj", "{31A8B197-7595-4D3E-9BC3-862DC62DA67E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EDE5C06A-A2C1-47B0-8F2F-3CDBA12B1AC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDE5C06A-A2C1-47B0-8F2F-3CDBA12B1AC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDE5C06A-A2C1-47B0-8F2F-3CDBA12B1AC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDE5C06A-A2C1-47B0-8F2F-3CDBA12B1AC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31A8B197-7595-4D3E-9BC3-862DC62DA67E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31A8B197-7595-4D3E-9BC3-862DC62DA67E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31A8B197-7595-4D3E-9BC3-862DC62DA67E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31A8B197-7595-4D3E-9BC3-862DC62DA67E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B66CA988-83B2-41A9-ABA1-2F3AF0897612}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,119 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Démo FRW";
+}
+
+<div id="sectionTableauFormulaires">
+    <partial name="_TableauFormulaires.cshtml" for="Formulaires">
+</div>
+
+@section Scripts
+    {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            InitialiserTableau();
+        });
+
+        function InitialiserTableau() {
+            var tableauFormulaires = $('#tableauFormulaires').DataTable({
+                paging: false,
+                searching: false,
+                info: false,
+                sort: true,
+                scrollY: "393px",
+                order: [[1, "desc"]],
+                columnDefs: [
+                    { orderable: true, targets: 1 },
+                    { orderable: false, targets: "_all" }
+                ],
+                language: dataTablesSettings.languages.fr
+            });
+
+            tableauFormulaires.columns.adjust().draw();
+
+            tableauFormulaires.on('click', 'tbody tr', (e) => {
+                var classList = e.currentTarget.classList;
+
+                if (classList.contains('selected')) {
+                    classList.remove('selected');
+                    $("#btnSupprimerForm").prop('disabled', true)
+                }
+                else {
+                    tableauFormulaires.rows('.selected').nodes().each((row) => row.classList.remove('selected'));
+                    classList.add('selected');
+                    $("#btnSupprimerForm").prop('disabled', false)
+                }
+            });
+        }
+
+        function CreerForm() {
+            $.ajax({
+                type: "POST",
+                dataType: 'json',
+                url: "@Model.UrlAPI/api/Formulaires?identifiantUtilisateur=@Model.IdentifiantUtilisateur",
+                data: JSON.stringify("@Model.TypeFormulaire"),
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    $('#sectionTableauFormulaires').load('/index?handler=TableauFormulaires', function () {
+                        InitialiserTableau();
+                        AfficherSucces("Création", "Formulaire '" + data.sortie.noPublicForm + "' créé avec succès.");
+                    });
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    AfficherErreur();
+                }
+            })
+        }
+
+        function SupprimerForm() {
+            var noFormSelectionne = $(".selected:first").find(".noPublicForm").text();
+
+            if (noFormSelectionne == "" || noFormSelectionne == "undefined" || noFormSelectionne == null) {
+                AfficherErreur();
+            }
+            else {
+                $.ajax({
+                    type: "DELETE",
+                    dataType: 'json',
+                    url: "@Model.UrlAPI/api/Formulaires?identifiantUtilisateur=@Model.IdentifiantUtilisateur&noFormulairePublic=" + noFormSelectionne,
+                    contentType: "application/json; charset=utf-8",
+                    success: function (retour) {
+                        $('#sectionTableauFormulaires').load('/index?handler=TableauFormulaires', function () {
+                            InitialiserTableau();
+                            AfficherSucces("Supression", "Formulaire '" + noFormSelectionne + "' supprimé avec succès.");
+                        });
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        AfficherErreur();
+                    }
+                })
+            }
+        }
+
+        function OuvrirForm(noFormulaire) {
+            $.get("@Model.UrlAPI/api/Sessions?identifiantUtilisateur=@Model.IdentifiantUtilisateur&noFormulairePublic=" + noFormulaire, function (data) {
+                window.open("@Model.UrlFRW/Reprise?no=" + data.sortie.noPublicSession, '_blank');
+            })
+        }
+
+        function AfficherSucces(titre, message) {
+            const params = {
+                titre: titre,
+                message: message
+            };
+
+            utd.notification.emettre(params)
+        }
+
+        function AfficherErreur() {
+            const params = {
+                type: "negatif",
+                titre: "Erreur",
+                message: "Une erreur s'est produite."
+            };
+
+            utd.notification.emettre(params)
+        }
+    </script>
+} 

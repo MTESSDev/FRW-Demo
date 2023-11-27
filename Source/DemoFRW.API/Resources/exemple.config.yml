@@ -1,0 +1,12 @@
+id: 3003
+equipe: FRW
+
+# Pré-remplissage
+preRemplissage: |
+  {
+    "form": {
+        "contexteApp": "{{contexteApp}}",
+        "Courriel": "{{Courriel}}",
+        "CodePermanent": "{{CodePermanent}}"
+    }
+  }

@@ -1,0 +1,25 @@
+﻿@model List<Formulaire>
+
+<table id="tableauFormulaires" class="utd-table bordures-lignes rayee">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Date de création</th>
+            <th>Numéro</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var unForm in Model)
+        {
+            <tr>
+                <td><span class="url" onclick="OuvrirForm('@unForm.NoPublicForm')">@unForm.TypeFormulaire - @unForm.TitreLangueActuelle</span></td>
+                <td>@unForm.DateCreation.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                <td class="noPublicForm">@unForm.NoPublicForm</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div id="actionsTableauForm">
+    <button type="button" id="btnSupprimerForm" class="utd-btn avertissement compact arrondi" disabled="disabled" onclick="SupprimerForm()">Supprimer</button>
+    <button type="button" id="btnCreerForm" class="utd-btn primaire compact arrondi" onclick="CreerForm()">Créer</button>
+</div>

@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - DemoFRW.PR</title>
+    <link rel="stylesheet" href="~/lib/datatables/css/jquery.datatables.min.css" />
+    <link rel='stylesheet' href='~/css/utd-webcomponents.min.css?v=1.13.0'>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/DemoFRW.PR.styles.css" asp-append-version="true" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="~/images/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/images/favicons/favicon-16x16.png">
+    <link rel="mask-icon" href="~/images/favicons/safari-pinned-tab.svg" color="#5bbad5">
+
+    <!-- Préchargement des fonts requises UTD -->
+    <link rel="preload" as="font" href="~/fonts/open-sans-v18-latin-regular.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="~/fonts/open-sans-v18-latin-600.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="~/fonts/open-sans-v18-latin-700.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="~/fonts/roboto-v20-latin-regular.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="~/fonts/roboto-v20-latin-500.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="~/fonts/roboto-v20-latin-700.woff2" type="font/woff2" crossorigin="anonymous">
+</head>
+<body>
+    <div>
+        <!-- Conteneur principal, sera utile si vous désirez que le pied de page soit toujours en bas de page même dans une page ayant très peu de contenu. -->
+        <div class="utd-conteneur-principal">
+            <header>
+                <utd-piv-entete id="pivEntete" titre-site1="Démo FRW" alt-logo="Signature du gouvernement du Québec. Accédez à la démo FRW.">
+                </utd-piv-entete>
+
+                <!-- Bandeau principal contenant le menu horizontal et la zone de raccourcis et de connexion -->
+                <div class="utd-bandeau-principal" id="bandeauPrincipal">
+                    <div class="utd-container">
+                        <utd-menu-horizontal id="menuHorizontal" afficher-icone-accueil="true">
+                        </utd-menu-horizontal>
+                    </div>
+                </div>
+
+            </header>
+
+            <div class="utd-container">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
+
+        <utd-hautpage id="hautPage"></utd-hautpage>
+        <footer class="utd">
+            <utd-piv-pied-page id="pivPiedPage">
+                <div slot="liens">
+                    <ul>
+                        <li><a href="#bidon">Accessibilité</a></li>
+                    </ul>
+                </div>
+            </utd-piv-pied-page>
+        </footer>
+    </div>
+
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/datatables/js/jquery.datatables.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/datatablesSettings.js"></script>
+    <script src='~/js/utd-webcomponents.min.js?v=1.13.0'></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

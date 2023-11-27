@@ -1,0 +1,52 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+.utd-conteneur-principal {
+    min-height: calc(100vh - 233px);
+}
+
+.url {
+    color: var(--couleur-liens);
+    cursor: pointer;
+}
+
+    .url:hover {
+        text-decoration: underline;
+    }
+
+.dataTables_scrollBody {
+    overflow-x: hidden !important;
+}
+
+#btnCreerForm {
+    float: right;
+    margin-right: 10px;
+}
+
+#btnSupprimerForm {
+    float: right;
+}
+
+table.dataTable tbody tr:nth-of-type(even).selected {
+    background-color: #B0BED9;
+}
+
+#actionsTableauForm {
+    margin-top: 10px;
+}
